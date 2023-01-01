@@ -7,25 +7,25 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.androiddevs.mvvmnewsapp.models.Article
 
-// database class for Room always has to be an Abstract class
 @Database(
-    // articles are passed in an array
+    // tables are passed in an array (in this case there is only one table)
     entities = [Article::class],
     version = 1
 )
 
-// tell database to add the TypeConverters class
+/* - database class for Room always has to be an Abstract class
+   - tell database to add the TypeConverters class */
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase(){
 
-    // function to return ArticleDao
+    // function to return ArticleDao (from the ArticleDao interface)
     abstract fun getArticleDao(): ArticleDao
 
     // companion object to create the database
     companion object {
 
         /* - @Volatile allows other threads to see when a thread changes this instance
-           - var to create instance of this ArticleDatabase class */
+           - var to create a singleton instance of this ArticleDatabase class */
         @Volatile
         private var instance: ArticleDatabase? = null
 
