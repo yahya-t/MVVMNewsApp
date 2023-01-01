@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 )
 data class Article(
     @PrimaryKey(autoGenerate = true) // automatically increments the PK
-    val id: Int? = null,
+    val id: Int? = null, //Primary Key
     val author: String,
     val publishedAt: String,
     val source: Source,
